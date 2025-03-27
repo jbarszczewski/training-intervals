@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forui/forui.dart';
-import 'package:training_intervals/features/library/presentation/library_screen.dart';
+import 'package:training_intervals/features/dashboard/presentation/widgets/interval_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   static const String route = '/';
@@ -9,51 +8,40 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FScaffold(
-      header: FHeader(
+    return Scaffold(
+      appBar: AppBar(
         title: Text('Dashboard'),
         actions: [
-          FHeaderAction(
-            icon: FIcon(
-              FAssets.icons.bird,
-              color: Colors.red,
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.amber,
               size: 24,
-              semanticLabel: 'Label',
+              semanticLabel: 'Settings',
             ),
-            onPress: () {},
+            onPressed: () {},
           ),
         ],
       ),
-      content: Column(
-        children: [
-          FCard(
-            title: const Text('Dashboard sometjing'),
-            subtitle: const Text('You have 3 unread messages.'),
-            child: FButton(
-              label: const Text('Read messages'),
-              onPress: () => Navigator.pushNamed(context, LibraryScreen.route),
+      body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          final routes = [
+            "/intervals/123",
+            "/intervals/1",
+            "/intervals/12",
+            "/intervals/3",
+            "/intervals/23",
+          ];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: IntervalCard(
+              title: 'Dashboard sometjing',
+              onPressed: () => Navigator.pushNamed(context, routes[index]),
             ),
-          ),
-        ],
+          );
+        },
       ),
-      footer: FBottomNavigationBar(
-        children: [
-          FBottomNavigationBarItem(
-            icon: FIcon(FAssets.icons.house),
-            label: const Text('Home'),
-          ),
-          FBottomNavigationBarItem(
-            icon: FIcon(FAssets.icons.libraryBig),
-            label: const Text('Library'),
-          ),
-          FBottomNavigationBarItem(
-            icon: FIcon(FAssets.icons.cog),
-            label: const Text('Settings'),
-          ),
-        ],
-      ),
-      contentPad: true,
-      resizeToAvoidBottomInset: true,
     );
   }
 }
