@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:training_intervals/features/dashboard/presentation/dashboard_screen.dart';
-import 'package:training_intervals/features/intervals/presentation/details_screen.dart';
-import 'package:training_intervals/features/intervals/presentation/player_screen.dart';
+import 'package:training_intervals/features/dashboard/widgets/dashboard_screen.dart';
+import 'package:training_intervals/features/intervals/widgets/details_screen.dart';
+import 'package:training_intervals/features/intervals/widgets/player_screen.dart';
+
+import 'config/service_locator.dart';
 
 void main() {
+  // Register dependencies
+  registerDependencies();
   runApp(const Application());
 }
 
@@ -14,6 +18,8 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData.light(),
+    darkTheme: ThemeData.dark(),
+    themeMode: ThemeMode.system,
     onGenerateRoute: (settings) {
       // Handle '/'
       if (settings.name == '/') {
