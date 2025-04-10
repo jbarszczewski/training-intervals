@@ -2,13 +2,17 @@ class Interval {
   final String id;
   final String title;
   final List<Step> steps;
-  final int restDuration;
+  final int numberOfSets;
+  final int stepRestDuration;
+  final int setRestDuration;
 
   Interval({
     required this.id,
     required this.title,
     required this.steps,
-    required this.restDuration,
+    required this.numberOfSets,
+    required this.stepRestDuration,
+    required this.setRestDuration,
   });
 
   Interval copyWith({String? id, String? title}) {
@@ -16,7 +20,9 @@ class Interval {
       id: id ?? this.id,
       title: title ?? this.title,
       steps: steps,
-      restDuration: restDuration,
+      stepRestDuration: stepRestDuration,
+      numberOfSets: numberOfSets,
+      setRestDuration: setRestDuration,
     );
   }
 }

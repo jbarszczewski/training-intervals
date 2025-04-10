@@ -6,7 +6,14 @@ import '../models/interval.dart';
 
 class IntervalManager with ChangeNotifier {
   final _intervalRepository = getIt<IntervalRepository>();
-  Interval _interval = Interval(id: '', title: '', steps: [], restDuration: 0);
+  Interval _interval = Interval(
+    id: '',
+    title: '',
+    steps: [],
+    stepRestDuration: 0,
+    numberOfSets: 0,
+    setRestDuration: 0,
+  );
   Interval get interval => _interval;
 
   void loadInterval(String id) {

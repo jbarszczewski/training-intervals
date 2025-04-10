@@ -40,7 +40,7 @@ class DetailsScreen extends StatelessWidget {
                 children: [
                   Text(interval.title),
                   Text('Steps: ${interval.steps.length}'),
-                  Text('Rest duration: ${interval.restDuration}'),
+                  Text('Rest duration: ${interval.stepRestDuration}'),
                 ],
               );
             },
